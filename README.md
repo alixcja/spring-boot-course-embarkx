@@ -21,6 +21,7 @@ The goal is to understand the core concepts of Spring Boot by building real-worl
 
 - **20/06/2025**: Completed Courses 2 and 3
 - **22/06/2025**: Finished Course 4 – Added a simple controller and service classes for user management
+- **23/06/2025**: Explore JPA by defining user as entity, add a userRepository which extends the jpaRepository and adjust the methods in userService to use the new userRepository
 
 ## 📖 Notes
 This is a learning repository — code may evolve, refactor, or break as I explore new concepts. All code is based on or inspired by the Udemy course linked above.
