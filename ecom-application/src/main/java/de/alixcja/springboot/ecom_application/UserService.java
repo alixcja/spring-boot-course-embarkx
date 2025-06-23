@@ -29,7 +29,7 @@ public class UserService {
   }
 
   public boolean updateUserById(Long id, User user) {
-    userList.stream()
+    return userList.stream()
             .filter(u -> u.getId().equals(id))
             .findFirst()
             .map(existingUser -> {
