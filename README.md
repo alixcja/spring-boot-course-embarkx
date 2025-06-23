@@ -1,6 +1,6 @@
 # Spring Boot Learning Journey 🌱
 This repository contains my journey of learning **Spring Boot** by following the Udemy course:
-🎓 **[Spring Boot Microservices Professional eCommerce Masterclass](https://www.udemy.com/course/java-spring-boot-microservices-with-spring-cloud-k8s-docker/?couponCode=KEEPLEARNING)** by **Shabbir Dawoodi**.
+🎓 **[Spring Boot Microservices Professional eCommerce Masterclass](https://www.udemy.com/course/java-spring-boot-microservices-with-spring-cloud-k8s-docker/?couponCode=KEEPLEARNING)** by **Faisal Memeom (EmbarkX)**.
 The goal is to understand the core concepts of Spring Boot by building real-world projects and experimenting with code.
 
 ## 📚 What I will (hopefully) learn
