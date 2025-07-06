@@ -1,5 +1,8 @@
-package de.alixcja.springboot.ecom_application;
+package de.alixcja.springboot.ecom_application.controller;
 
+import de.alixcja.springboot.ecom_application.dto.UserRequest;
+import de.alixcja.springboot.ecom_application.dto.UserResponse;
+import de.alixcja.springboot.ecom_application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +23,13 @@ public class UserController {
    @GetMapping
   // Second way:
   // @RequestMapping(value = "/api/users", method = RequestMethod.GET)
-  public ResponseEntity<List<User>> getAllUsers() {
+  public ResponseEntity<List<UserResponse>> getAllUsers() {
     return new ResponseEntity<>(userService.fetchAllUsers(), HttpStatus.OK);
   }
 
   // Fetch user via path variable, spring boot recognize the {id} as a dynamic path value
   @GetMapping("/{id}")
-  public ResponseEntity<User> getUserById(@PathVariable Long id) {
+  public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
     return userService.fetchUserById(id)
             .map(ResponseEntity::ok)
             .orElseGet(() ->
@@ -34,13 +37,13 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<String> createUser(@RequestBody User user) {
+  public ResponseEntity<String> createUser(@RequestBody UserRequest user) {
     userService.addUser(user);
     return ResponseEntity.ok("User successfully added");
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User user) {
+  public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody UserRequest user) {
     boolean updated = userService.updateUserById(id, user);
     if (!updated) {
       return ResponseEntity.notFound().build();

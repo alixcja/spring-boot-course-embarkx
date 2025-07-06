@@ -1,5 +1,6 @@
-package de.alixcja.springboot.ecom_application;
+package de.alixcja.springboot.ecom_application.repository;
 
+import de.alixcja.springboot.ecom_application.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
