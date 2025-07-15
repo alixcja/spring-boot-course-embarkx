@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -14,6 +16,16 @@ public class ProductController {
 
   public ProductController(ProductService productService) {
     this.productService = productService;
+  }
+
+  @GetMapping
+  public ResponseEntity<List<ProductResponse>> getAllProducts() {
+    return ResponseEntity.ok(productService.getAllProducts());
+  }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<ProductResponse>> searchProducts(@RequestParam String keyword) {
+    return ResponseEntity.ok(productService.searchProducts(keyword));
   }
 
   @PostMapping
@@ -28,4 +40,9 @@ public class ProductController {
             .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    boolean deleted = productService.deleteById(id);
+    return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+  }
 }

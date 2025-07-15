@@ -6,6 +6,7 @@ import de.alixcja.springboot.ecom_application.model.Product;
 import de.alixcja.springboot.ecom_application.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,5 +45,32 @@ public class ProductService {
               Product saved = productRepository.save(existing);
               return mapToProductResponse(saved);
             });
+  }
+
+  public List<ProductResponse> getAllProducts() {
+    return productRepository.findByActiveTrue()
+            .stream()
+            .map(this::mapToProductResponse)
+            .toList();
+  }
+
+  public boolean deleteById(Long id) {
+    return productRepository.findById(id)
+            .map(product -> {
+              return update(product);
+            }).orElse(false);
+  }
+
+  private boolean update(Product product) {
+    product.setActive(false);
+    productRepository.save(product);
+    return true;
+  }
+
+  public List<ProductResponse> searchProducts(String keyword) {
+    return productRepository.searchProducts(keyword)
+            .stream()
+            .map(this::mapToProductResponse)
+            .toList();
   }
 }
