@@ -23,4 +23,43 @@ public class OrderItem {
   @ManyToOne
   @JoinColumn(name = "order_id", nullable = false)
   private Order order;
+
+  public OrderItem(Product product, Integer quantity, BigDecimal price, Order order) {
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public Product getProduct() {
+    return product;
+  }
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
+  public Integer getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
+
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
 }

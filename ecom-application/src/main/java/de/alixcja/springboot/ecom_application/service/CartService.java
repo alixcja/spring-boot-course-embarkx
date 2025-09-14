@@ -98,6 +98,11 @@ public class CartService {
 
   }
 
+  public List<CartItem> getCart(String userId) {
+    User user = userRepository.findById(Long.valueOf(userId)).orElseThrow();
+    return cartItemRepository.findByUser(user);
+  }
+
   private CartItemResponse mapToCartResponse(CartItem item) {
     CartItemResponse response = new CartItemResponse();
     response.setId(item.getId());
@@ -106,5 +111,10 @@ public class CartService {
     response.setUser(item.getUser());
     response.setQuantity(item.getQuantity());
     return response;
+  }
+
+  public void clearCart(String userId) {
+    User user = userRepository.findById(Long.valueOf(userId)).orElseThrow();
+    cartItemRepository.deleteByUser(user);
   }
 }
