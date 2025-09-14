@@ -10,7 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "product")
+@Entity(name = "products")
 public class Product {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
