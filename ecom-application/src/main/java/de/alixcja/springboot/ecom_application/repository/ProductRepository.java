@@ -18,6 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   // Used for defining custom queries which are not provided by jpa
   // :keyword is the placeholder
-  @Query("SELECT p FROM products p WHERE p.active = true AND p.stockQuantity > 0 AND LOWER(p.name) LIKE LOWER(CONCAT('%'; :keyword, '%'))")
+  @Query("SELECT p FROM products p WHERE p.active = true AND p.stockQuantity > 0 AND LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))")
   List<Product> searchProducts(@Param("keyword") String keyword);
 }
